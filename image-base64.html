@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image to Base64 — Free Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="page-image-base64">
+  <header class="site-header small">
+    <div class="container"><a class="back" href="index.html">← Home</a><h1>Image → Base64</h1></div>
+  </header>
+
+  <main class="container">
+    <section class="tool">
+      <input id="ib-file" type="file" accept="image/*" />
+      <div class="tool-controls"><button id="ib-convert">Convert</button></div>
+      <textarea id="ib-result" rows="8" placeholder="Base64 result will appear here..."></textarea>
+      <div class="ad-spot consent-ad" data-adspot="bottom"><div class="ad-placeholder">Adsterra Banner (loads after consent)</div></div>
+    </section>
+  </main>
+
+  <div id="consent-banner" class="consent-banner">
+    <p>This site uses ads (Adsterra) to support free tools. Do you accept?</p>
+    <button id="consent-accept">Accept</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const ibFile=document.getElementById('ib-file');
+    const ibConvert=document.getElementById('ib-convert');
+    const ibResult=document.getElementById('ib-result');
+    ibConvert.addEventListener('click',()=>{const f=ibFile.files&&ibFile.files[0];if(!f)return alert('Please choose an image file first');const reader=new FileReader();reader.onload=()=>{ibResult.value=reader.result;};reader.readAsDataURL(f);});
+  </script>
+</body>
+</html>
