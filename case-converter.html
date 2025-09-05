@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case Converter — Free Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="page-case-converter">
+  <header class="site-header small">
+    <div class="container"><a class="back" href="index.html">← Home</a><h1>Case Converter</h1></div>
+  </header>
+
+  <main class="container">
+    <section class="tool">
+      <textarea id="cc-text" placeholder="Type or paste text..." rows="10"></textarea>
+      <div class="tool-controls">
+        <button data-fn="upper">UPPERCASE</button>
+        <button data-fn="lower">lowercase</button>
+        <button data-fn="title">Title Case</button>
+        <button data-fn="sentence">Sentence case</button>
+        <button data-fn="trim">Trim Extra Spaces</button>
+      </div>
+      <div class="ad-spot consent-ad" data-adspot="bottom"><div class="ad-placeholder">Adsterra Banner (loads after consent)</div></div>
+    </section>
+  </main>
+
+  <div id="consent-banner" class="consent-banner">
+    <p>This site uses ads (Adsterra) to support free tools. Do you accept?</p>
+    <button id="consent-accept">Accept</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const ccText=document.getElementById('cc-text');
+    document.querySelectorAll('.tool-controls button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const fn=btn.dataset.fn;let t=ccText.value||'';if(!t)return;
+        if(fn==='upper')t=t.toUpperCase();
+        if(fn==='lower')t=t.toLowerCase();
+        if(fn==='title')t=t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.substr(1).toLowerCase());
+        if(fn==='sentence')t=t.toLowerCase().replace(/(^|[\.\!\?]\s+)([a-z])/, (m,p,c)=>p+c.toUpperCase());
+        if(fn==='trim')t=t.replace(/\s+/g,' ').trim();
+        ccText.value=t;
+      });
+    });
+  </script>
+</body>
+</html>
