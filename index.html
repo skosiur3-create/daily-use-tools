@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Online Tools — No Signup</title>
+  <meta name="description" content="Free online tools — word counter, case converter, password generator, image->base64, age calculator. No signup required." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="page-home">
+  <header class="site-header">
+    <div class="container">
+      <h1>Free Online Tools</h1>
+      <p class="tagline">No signup • 100% client-side</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="tools-grid">
+      <a class="tool-card" href="word-counter.html"><h2>Word Counter</h2><p>Count words, characters & reading time</p></a>
+      <a class="tool-card" href="case-converter.html"><h2>Case Converter</h2><p>Uppercase, lowercase, title case, remove extra spaces</p></a>
+      <a class="tool-card" href="password-generator.html"><h2>Password Generator</h2><p>Create strong random passwords</p></a>
+      <a class="tool-card" href="image-base64.html"><h2>Image → Base64</h2><p>Convert images to Base64 string in browser</p></a>
+      <a class="tool-card" href="age-calculator.html"><h2>Age Calculator</h2><p>Calculate exact age from DOB</p></a>
+    </section>
+
+    <section class="ad-spot consent-ad" data-adspot="top">
+      <div class="ad-placeholder">Adsterra Top Banner (loads after consent)</div>
+    </section>
+
+    <footer class="site-footer"><p>&copy; <span id="year"></span> Free Tools — No Signup</p></footer>
+  </main>
+
+  <div id="consent-banner" class="consent-banner">
+    <p>This site uses ads (Adsterra) to support free tools. Do you accept?</p>
+    <button id="consent-accept">Accept</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
