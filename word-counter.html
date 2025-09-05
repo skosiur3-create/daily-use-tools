@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Word Counter — Free Tools</title>
+  <meta name="description" content="Free online word counter — counts words, characters and estimates reading time. No signup." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="page-word-counter">
+  <header class="site-header small">
+    <div class="container"><a class="back" href="index.html">← Home</a><h1>Word Counter</h1></div>
+  </header>
+
+  <main class="container">
+    <section class="tool">
+      <textarea id="wc-text" placeholder="Paste your text here..." rows="10"></textarea>
+      <div class="tool-controls">
+        <button id="wc-count">Count</button>
+        <button id="wc-clear">Clear</button>
+      </div>
+      <div id="wc-results" class="results" aria-live="polite"></div>
+
+      <div class="ad-spot consent-ad" data-adspot="bottom">
+        <div class="ad-placeholder">Adsterra Banner (loads after consent)</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="consent-banner" class="consent-banner">
+    <p>This site uses ads (Adsterra) to support free tools. Do you accept?</p>
+    <button id="consent-accept">Accept</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const wcText=document.getElementById('wc-text');
+    const wcCount=document.getElementById('wc-count');
+    const wcClear=document.getElementById('wc-clear');
+    const wcResults=document.getElementById('wc-results');
+    function computeCounts(text){const chars=text.length;const words=(text.trim().match(/\S+/g)||[]).length;const readingMinutes=(words/200);return{chars,words,readingMinutes};}
+    wcCount.addEventListener('click',()=>{const text=wcText.value||'';const r=computeCounts(text);wcResults.innerHTML=`Words: <strong>${r.words}</strong> — Characters: <strong>${r.chars}</strong> — Estimated reading time: <strong>${Math.ceil(r.readingMinutes*60)} sec</strong>`;});
+    wcClear.addEventListener('click',()=>{wcText.value='';wcResults.textContent='';wcText.focus();});
+  </script>
+</body>
+</html>
