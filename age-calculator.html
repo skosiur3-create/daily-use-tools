@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Age Calculator — Free Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="page-age-calculator">
+  <header class="site-header small">
+    <div class="container"><a class="back" href="index.html">← Home</a><h1>Age Calculator</h1></div>
+  </header>
+
+  <main class="container">
+    <section class="tool">
+      <label>Date of Birth: <input id="ac-dob" type="date" /></label>
+      <div class="tool-controls"><button id="ac-calc">Calculate Age</button></div>
+      <div id="ac-result" class="results"></div>
+      <div class="ad-spot consent-ad" data-adspot="bottom"><div class="ad-placeholder">Adsterra Banner (loads after consent)</div></div>
+    </section>
+  </main>
+
+  <div id="consent-banner" class="consent-banner">
+    <p>This site uses ads (Adsterra) to support free tools. Do you accept?</p>
+    <button id="consent-accept">Accept</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function calculateAge(dobStr){const dob=new Date(dobStr);if(isNaN(dob))return null;const now=new Date();let years=now.getFullYear()-dob.getFullYear();let months=now.getMonth()-dob.getMonth();let days=now.getDate()-dob.getDate();if(days<0){months-=1;days+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}if(months<0){years-=1;months+=12;}return{years,months,days};}
+    document.getElementById('ac-calc').addEventListener('click',()=>{const dob=document.getElementById('ac-dob').value;const res=calculateAge(dob);const el=document.getElementById('ac-result');if(!res){el.textContent='Please enter a valid date of birth';return;}el.textContent=`Age: ${res.years} years, ${res.months} months, ${res.days} days`;});
+  </script>
+</body>
+</html>
